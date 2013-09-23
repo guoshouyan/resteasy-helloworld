@@ -20,6 +20,16 @@ Perform a git clone of the repository and remove the git bits:
 Now you can import the project into your favorite IDE, use the Maven
 integration to import the POM file.
 
+Configured Resource
+-------------------
+
+This project has one resource configured called `HelloResource`, and it
+can be found in `src/main/java` in the package
+`com.martijndashorst.quickstarts.resteasy`.
+
+Running the Project
+-------------------
+
 To run the project use the `Start` class located in the `src/test/java`
 folder. This will start the embedded Jetty container and make the REST
 resources available at port 8080 of localhost.
@@ -46,3 +56,5 @@ If run using the `curl` command you should expect the following output:
     < Server: Jetty(8.1.12.v20130726)
     < 
     < Hello, World!
+
+Have fun!
