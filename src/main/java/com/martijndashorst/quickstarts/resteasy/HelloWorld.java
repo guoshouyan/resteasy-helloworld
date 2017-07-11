@@ -3,8 +3,7 @@ package com.martijndashorst.quickstarts.resteasy;
 /**
  * Created by guo on 12/06/2017.
  */
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import io.swagger.jaxrs.config.BeanConfig;
 
 import javax.ws.rs.GET;
@@ -15,14 +14,17 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/hello")
-//@Produces(MediaType.TEXT_PLAIN)
 @Produces("application/json")
-@Api(value = "hello world1")
+@Api(tags = "Hello")
 public class HelloWorld {
     @GET
     @Produces("application/json")
     @ApiOperation(value = "return hello world")
-    public Response hello(@QueryParam("username") String username) {
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success",
+                    response = String.class),
+            @ApiResponse(code = 404, message = "query param 'username' is missing") })
+    public Response hello(@ApiParam(value = "username", required = true) @QueryParam("username") String username) {
         if(username == null){
             return Response.status(400).build();
         }
